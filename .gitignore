@@ -1,0 +1,25 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+
+# Virtual Environment
+.venv/
+venv/
+env/
+
+# Dataset - keep large image files out of GitHub
+data/raw/
+data/processed/patches/
+data/processed/*.png
+data/processed/*.jpg
+
+# Local system files
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Temporary files
+*.log
+*.tmp
