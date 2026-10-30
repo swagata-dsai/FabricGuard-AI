@@ -41,7 +41,11 @@ Save a screenshot of your deployed dashboard in the repository at:
 
 Then display it here by keeping this Markdown line:
 
-![FabricGuard AI Dashboard](docs/images/fabricguard-dashboard.png)
+![FabricGuard AI Dashboard]("C:\Users\swagata das\Pictures\Screenshots\Screenshot 2026-10-30 170456.png")
+("C:\Users\swagata das\Pictures\Screenshots\Screenshot 2026-10-30 170547.png")
+("C:\Users\swagata das\Pictures\Screenshots\Screenshot 2026-10-30 170645.png")
+("C:\Users\swagata das\Pictures\Screenshots\Screenshot 2026-10-30 170754.png")
+
 
 ---
 
