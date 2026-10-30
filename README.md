@@ -30,21 +30,26 @@ Upload a fabric image and explore:
 
 ---
 
+
 ## 📸 Application Preview
 
 The dashboard allows users to upload fabric images and view patch-level quality predictions.
 
-**Dashboard screenshot:**
-Save a screenshot of your deployed dashboard in the repository at:
+### 1. Main Dashboard
 
-`docs/images/fabricguard-dashboard.png`
+![FabricGuard AI Dashboard](dashboard/fabricguard-dashboard.png)
 
-Then display it here by keeping this Markdown line:
+### 2. Uploaded Fabric Image
 
-![FabricGuard AI Dashboard]("C:\Users\swagata das\Pictures\Screenshots\Screenshot 2026-10-30 170456.png")
-("C:\Users\swagata das\Pictures\Screenshots\Screenshot 2026-10-30 170547.png")
-("C:\Users\swagata das\Pictures\Screenshots\Screenshot 2026-10-30 170645.png")
-("C:\Users\swagata das\Pictures\Screenshots\Screenshot 2026-10-30 170754.png")
+![Fabric Upload](dashboard/fabric-upload.png)
+
+### 3. Quality Assessment Results
+
+![Quality Assessment](dashboard/quality-assessment.png)
+
+### 4. Patch-wise Predictions
+
+![Patch Predictions](dashboard/patch-predictions.png)
 
 
 ---
