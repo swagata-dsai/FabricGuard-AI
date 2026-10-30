@@ -79,7 +79,11 @@ The system uses the AITEX Fabric Image Database and a CNN-based classification a
 
 ## 🗂️ Dataset Information
 
-**Dataset:** AITEX Fabric Image Database
+**Dataset Name:** AITEX Fabric Image Database
+
+**Dataset Source:** [Download Dataset from Kaggle](https://www.kaggle.com/datasets/nexuswho/aitex-fabric-image-database)
+
+**Official Source:** [AITEX Official Website](https://www.aitex.es/afid/)
 
 | Dataset Category            | Number of Images |
 | --------------------------- | ---------------: |
