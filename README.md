@@ -1,264 +1,226 @@
-<div align="center">
-
 # 🧵 FabricGuard AI
 
-### Intelligent Textile Defect Detection & Quality Assessment
+### Intelligent Textile Defect Detection & Quality Assessment System
 
-**Deep Learning | Computer Vision | CNN | TensorFlow | Streamlit**
+An AI-powered textile quality assessment prototype that uses Convolutional Neural Networks (CNN) to classify fabric image patches as **Normal** or **Potential Defect**.
 
-An AI-powered academic prototype that classifies fabric image patches as Normal or Potentially Defective using Convolutional Neural Networks.
-
-<br>
-
-![Python](https://img.shields.io/badge/Python-3.13-blue?logo=python)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange?logo=tensorflow)
-![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-red?logo=streamlit)
-![Status](https://img.shields.io/badge/Project-Academic%20Prototype-purple)
-![GitHub](https://img.shields.io/badge/Version%20Control-GitHub-black?logo=github)
-
-<br>
-
-### 🔗 Quick Access
-
-[📂 GitHub Repository](https://github.com/swagata-dsai/FabricGuard-AI) · [🖥️ Dashboard Source Code](https://github.com/swagata-dsai/FabricGuard-AI/blob/main/dashboard/app.py) · [🚀 Streamlit Community Cloud](https://share.streamlit.io/)
-
-**Live Demo:** Not deployed yet. The public app URL will be added after deployment.
-
-</div>
+<p align="center">
+  <a href="https://fabricguard-ai-eiy2j2texmwhgthi8h6hju.streamlit.app/">
+    <img src="https://img.shields.io/badge/🚀_Live_Demo-Streamlit-red?style=for-the-badge" />
+  </a>
+  <img src="https://img.shields.io/badge/Python-3.12-blue?style=for-the-badge&logo=python" />
+  <img src="https://img.shields.io/badge/TensorFlow-2.21-orange?style=for-the-badge&logo=tensorflow" />
+  <img src="https://img.shields.io/badge/Status-Experimental-yellow?style=for-the-badge" />
+</p>
 
 ---
 
-## 📌 01. Project Overview
+## 🚀 Live Demo
 
-FabricGuard AI is a Deep Learning and Computer Vision project designed to explore automated textile defect screening.
+Try the deployed application:
 
-Traditional textile inspection often depends on manual observation, which can be time-consuming and inconsistent.
+### 👉 [Open FabricGuard AI Dashboard](https://fabricguard-ai-eiy2j2texmwhgthi8h6hju.streamlit.app/)
 
-This project applies CNN-based image classification to identify fabric patches that may contain defects.
+Upload a fabric image and explore:
 
-### What does FabricGuard AI do?
-
-| Input             | Processing              | Output                    |
-| ----------------- | ----------------------- | ------------------------- |
-| Fabric Image      | Image preprocessing     | Image patches             |
-| Defect Mask       | Binary mask labelling   | Patch labels              |
-| Image Patches     | CNN classification      | Normal / Defect           |
-| Prediction Scores | Streamlit visualization | Quality assessment report |
-
-> **Scope:** This is a patch-level binary classification system. It does not perform pixel-level defect segmentation or guarantee exact defect localization.
+* Patch-wise defect predictions
+* Defect probability scores
+* Normal and potential defect patch counts
+* Downloadable prediction results
 
 ---
 
-## 🎯 02. Project Objectives
+## 📸 Application Preview
 
-* Build an end-to-end textile defect classification pipeline.
-* Analyze and preprocess the AITEX Fabric Image Database.
-* Generate 256 × 256 patches from large fabric images.
-* Create binary labels using defect masks.
-* Prevent data leakage through source-image-level splitting.
-* Train and compare two CNN architectures.
-* Evaluate performance using classification metrics.
-* Develop an interactive Streamlit dashboard.
+The dashboard allows users to upload fabric images and view patch-level quality predictions.
+
+**Dashboard screenshot:**
+Save a screenshot of your deployed dashboard in the repository at:
+
+`docs/images/fabricguard-dashboard.png`
+
+Then display it here by keeping this Markdown line:
+
+![FabricGuard AI Dashboard](docs/images/fabricguard-dashboard.png)
 
 ---
 
-## 📊 03. Dataset at a Glance
+## 📌 Project Overview
+
+Textile quality inspection is an important stage in fabric manufacturing. Defects such as holes, stains, broken threads, and irregular patterns can affect product quality.
+
+Traditional inspection can require significant manual effort. FabricGuard AI explores how deep learning can support textile quality assessment by classifying image patches.
+
+The system uses the AITEX Fabric Image Database and a CNN-based classification approach.
+
+**Important:** This is an academic prototype. It performs patch-level classification, not pixel-level defect segmentation.
+
+---
+
+## 🎯 Project Objectives
+
+* Develop a CNN-based textile defect classification system.
+* Preprocess high-resolution fabric images into smaller patches.
+* Reduce data leakage using source-image-level splitting.
+* Evaluate model performance using classification metrics.
+* Build an interactive Streamlit dashboard.
+* Explore the practical application of AI in textile quality assessment.
+
+---
+
+## 🗂️ Dataset Information
 
 **Dataset:** AITEX Fabric Image Database
 
-| Dataset Information     | Value |
-| ----------------------- | ----: |
-| Defect Images           |   106 |
-| Normal Images           |   141 |
-| Mask Images             |   107 |
-| Total Image Files       |   354 |
-| Processed Source Images |   246 |
-| Generated Image Patches | 3,935 |
-| Defect Patches          |   185 |
-| Normal Patches          | 3,750 |
+| Dataset Category            | Number of Images |
+| --------------------------- | ---------------: |
+| Defect Images Found         |              106 |
+| Normal Images Found         |              141 |
+| Mask Images Found           |              107 |
+| Total Extracted Image Files |              354 |
 
-### Patch Distribution
+One defect image was skipped because its corresponding mask was missing.
 
-| Class     | Label |   Patches |
-| --------- | ----: | --------: |
-| Normal    |     0 |     3,750 |
-| Defect    |     1 |       185 |
-| **Total** |       | **3,935** |
+### Preprocessing Summary
 
-The dataset is highly imbalanced, with a smaller number of defect patches.
+| Metric                  |    Result |
+| ----------------------- | --------: |
+| Processed Source Images |       246 |
+| Total Image Patches     |     3,935 |
+| Normal Patches          |     3,750 |
+| Defect Patches          |       185 |
+| Patch Dimensions        | 256 × 256 |
+
+High-resolution fabric images were divided into smaller 256 × 256 patches. Each patch was assigned a classification label.
 
 ---
 
-## ⚙️ 04. Project Workflow
+## 🔄 Project Workflow
 
 ```mermaid
 flowchart TD
-    A["AITEX Fabric Dataset"] --> B["Dataset Auditing & EDA"]
+    A["AITEX Fabric Dataset"] --> B["Dataset Exploration"]
     B --> C["Image Preprocessing"]
-    C --> D["Mask-Based Labelling"]
-    D --> E["256 × 256 Patch Generation"]
-    E --> F["Source-Level Dataset Split"]
-    F --> G["CNN Model V1"]
-    F --> H["CNN Model V2"]
-    G --> I["Performance Evaluation"]
-    H --> I
-    I --> J["Trained Model"]
-    J --> K["Streamlit Dashboard"]
-    K --> L["Fabric Patch Classification"]
+    C --> D["256 × 256 Patch Generation"]
+    D --> E["Mask-based Patch Labelling"]
+    E --> F["Grouped Train / Validation / Test Split"]
+    F --> G["CNN Model Training"]
+    G --> H["Model Evaluation"]
+    H --> I["Streamlit Dashboard"]
+    I --> J["Patch-level Predictions"]
 ```
 
 ---
 
-## 🧠 05. Deep Learning Models
+## 🧠 Model Architecture
 
-Two CNN architectures were developed and evaluated.
+Two CNN versions were developed and evaluated.
 
 ### CNN V1
 
-* Three convolutional layers.
-* 32, 64 and 128 filters.
-* MaxPooling layers.
-* Global Average Pooling.
-* Dense layer with 64 neurons.
-* Dropout regularization.
-* Sigmoid output for binary classification.
+* Convolutional layers: 32, 64, 128 filters
+* MaxPooling layers
+* Global Average Pooling
+* Dense layer with 64 units
+* Dropout: 0.4
+* Sigmoid output layer
+* Adam optimizer
+* Binary cross-entropy loss
 
 ### CNN V2
 
-* Four convolutional blocks.
-* 32, 64, 128 and 256 filters.
-* Batch Normalization.
-* ReLU activation.
-* MaxPooling.
-* Global Average Pooling.
-* Dense layer with 128 neurons.
-* Dropout regularization.
-* Sigmoid output.
-
-### Training Configuration
-
-| Parameter      |              CNN V1 |              CNN V2 |
-| -------------- | ------------------: | ------------------: |
-| Input Size     |           128 × 128 |           128 × 128 |
-| Batch Size     |                  32 |                  32 |
-| Maximum Epochs |                  25 |                  15 |
-| Optimizer      |                Adam |                Adam |
-| Learning Rate  |               0.001 |              0.0003 |
-| Loss           | Binary Crossentropy | Binary Crossentropy |
-| Class Weights  |            Balanced |            Balanced |
+* Four convolutional blocks: 32, 64, 128, 256 filters
+* Batch Normalization
+* ReLU activation
+* MaxPooling
+* Global Average Pooling
+* Dense layer with 128 units
+* Dropout: 0.4
+* Sigmoid output layer
+* Data augmentation
+* Class-weight balancing
+* Early Stopping and Learning Rate Reduction
 
 ---
 
-## 📈 06. Model Performance
+## 📊 Model Performance
 
-Both models were evaluated on the same held-out test dataset of **591 patches**.
+Evaluation was performed on a held-out test set.
 
-### CNN V1 vs CNN V2
+| Evaluation Metric | CNN V1 | CNN V2 |
+| ----------------- | -----: | -----: |
+| Accuracy          | 65.48% | 81.05% |
+| Precision         |  8.92% | 11.93% |
+| Recall            | 65.52% | 44.83% |
+| F1-Score          | 15.70% | 18.84% |
+| PR-AUC            | 10.09% | 11.31% |
 
-| Evaluation Metric |     CNN V1 |     CNN V2 |
-| ----------------- | ---------: | ---------: |
-| Accuracy          |     65.48% | **81.05%** |
-| Precision         |      8.92% | **11.93%** |
-| Recall            | **65.52%** |     44.83% |
-| F1-Score          |     15.70% | **18.84%** |
-| PR-AUC            |     10.09% | **11.31%** |
-
-### CNN V2 — Confusion Matrix
+### CNN V2 Confusion Matrix
 
 | Actual / Predicted | Normal | Defect |
 | ------------------ | -----: | -----: |
 | Normal             |    466 |     96 |
 | Defect             |     16 |     13 |
 
-### Key Findings
+### Performance Interpretation
 
-* CNN V2 achieved 81.05% test accuracy.
-* F1-score improved from 15.70% to 18.84%.
-* PR-AUC improved from 10.09% to 11.31%.
-* Defect precision remains low.
-* Further model development is needed before practical industrial use.
+CNN V2 improved accuracy, F1-score, and PR-AUC compared with CNN V1 at the default 0.50 threshold.
 
-> Accuracy alone is not sufficient for this imbalanced dataset. Precision, recall, F1-score and PR-AUC are also important.
+However, defect precision remains low. This means many patches flagged as potential defects may actually be normal.
+
+The model is therefore experimental and requires further improvement before any industrial application.
 
 ---
 
-## 🖥️ 07. Interactive Streamlit Dashboard
+## 🖥️ Streamlit Dashboard Features
 
-FabricGuard AI includes an interactive dashboard built using Streamlit.
+The interactive application provides:
 
-### Dashboard Capabilities
+* Fabric image upload
+* Automatic image patch generation
+* CNN-based patch classification
+* Normal and potential defect counts
+* Patch-wise defect probabilities
+* Visual prediction summaries
+* CSV download of prediction results
 
-| Feature            | Description                                |
-| ------------------ | ------------------------------------------ |
-| Image Upload       | Upload PNG, JPG, JPEG or BMP fabric images |
-| Patch Generation   | Divide images into 256 × 256 patches       |
-| CNN Prediction     | Classify patches using CNN V2              |
-| Defect Probability | Display model-generated probabilities      |
-| Prediction Summary | Show normal and defect patch counts        |
-| Results Table      | View individual patch predictions          |
-| CSV Export         | Download prediction results                |
+### Example Dashboard Output
 
-### Run the Dashboard Locally
+| Assessment Metric |  Example Result |
+| ----------------- | --------------: |
+| Uploaded Image    | 0020_016_03.png |
+| Image Dimensions  |      4096 × 256 |
+| Total Patches     |              16 |
+| Predicted Normal  |               7 |
+| Predicted Defect  |               9 |
 
-```bash
-streamlit run dashboard/app.py
-```
-
-Open:
-
-```text
-http://localhost:8501
-```
-
-**Dashboard source:** [View app.py](https://github.com/swagata-dsai/FabricGuard-AI/blob/main/dashboard/app.py)
-
-**Public deployment:** [Open Streamlit Community Cloud](https://share.streamlit.io/)
-
-A public application URL will be added here after deployment.
+These are predictions for one uploaded sample, not model accuracy or confirmed defect counts.
 
 ---
 
-## 📥 08. Dataset & CSV Files
+## 🛠️ Technology Stack
 
-The following processed dataset split files are available in the GitHub repository:
-
-| File                                                                                                                  | Description                  |
-| --------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| [Training CSV](https://github.com/swagata-dsai/FabricGuard-AI/blob/main/data/processed/splits/train.csv)              | Training patch metadata      |
-| [Validation CSV](https://github.com/swagata-dsai/FabricGuard-AI/blob/main/data/processed/splits/validation.csv)       | Validation patch metadata    |
-| [Testing CSV](https://github.com/swagata-dsai/FabricGuard-AI/blob/main/data/processed/splits/test.csv)                | Held-out test patch metadata |
-| [Confusion Matrix CSV](https://github.com/swagata-dsai/FabricGuard-AI/blob/main/outputs/metrics/confusion_matrix.csv) | CNN V1 test confusion matrix |
-
-**Note:** These CSV links point to the repository files. If GitHub shows a 404, verify that the corresponding file has been committed and pushed.
-
-The original AITEX dataset is not included in this repository.
+| Category         | Technologies              |
+| ---------------- | ------------------------- |
+| Programming      | Python                    |
+| Deep Learning    | TensorFlow, Keras         |
+| Data Processing  | NumPy, Pandas             |
+| Image Processing | Pillow                    |
+| Visualization    | Plotly                    |
+| Machine Learning | Scikit-learn              |
+| Web Application  | Streamlit                 |
+| Version Control  | Git, GitHub               |
+| Deployment       | Streamlit Community Cloud |
 
 ---
 
-## 🗂️ 09. Project Structure
+## 📁 Project Structure
 
 ```text
 FabricGuard-AI/
 │
 ├── dashboard/
-│   ├── app.py
-│   └── pages/
-│
-├── data/
-│   └── processed/
-│       └── splits/
-│           ├── train.csv
-│           ├── validation.csv
-│           └── test.csv
-│
-├── models/
-│   ├── fabricguard_cnn.keras
-│   └── fabricguard_cnn_v2.keras
-│
-├── outputs/
-│   ├── figures/
-│   ├── reports/
-│   └── metrics/
+│   └── app.py
 │
 ├── src/
 │   ├── preprocessing.py
@@ -268,113 +230,109 @@ FabricGuard-AI/
 │   ├── tune_threshold.py
 │   └── evaluate_tuned_model.py
 │
-├── tests/
+├── data/
+│   └── processed/
+│       └── patches/
+│
+├── models/
+│   ├── fabricguard_cnn.keras
+│   └── fabricguard_cnn_v2.keras
+│
+├── outputs/
+│   └── metrics/
+│
+├── docs/
+│   └── images/
+│       └── fabricguard-dashboard.png
+│
+├── requirements.txt
 ├── .gitignore
-├── README.md
-└── requirements.txt
+└── README.md
 ```
 
 ---
 
-## 💻 10. Installation & Setup
+## ⚙️ Installation and Setup
 
-### Clone the Repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/swagata-dsai/FabricGuard-AI.git
+```
+
+### 2. Navigate to the Project
+
+```bash
 cd FabricGuard-AI
 ```
 
-### Create Virtual Environment
+### 3. Create a Virtual Environment
 
-```powershell
+```bash
 python -m venv .venv
 ```
 
-### Activate Environment
+### 4. Activate the Environment
+
+Windows PowerShell:
 
 ```powershell
-.\.venv\Scripts\Activate.ps1
+.venv\Scripts\Activate.ps1
 ```
 
-### Install Dependencies
+### 5. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Run the Application
+### 6. Run the Streamlit Application
 
 ```bash
 streamlit run dashboard/app.py
 ```
 
-The AITEX dataset must be downloaded and configured separately to reproduce preprocessing and model training.
+---
+
+## ⚠️ Limitations
+
+* The dataset contains relatively few defect examples.
+* The classes are highly imbalanced.
+* Defect prediction precision is low.
+* Predictions are made at patch level, not pixel level.
+* The model is not validated for industrial production use.
+* Manual inspection is recommended for flagged patches.
 
 ---
 
-## 🛠️ 11. Technology Stack
+## 🔮 Future Improvements
 
-| Area             | Tools                       |
-| ---------------- | --------------------------- |
-| Programming      | Python                      |
-| Deep Learning    | TensorFlow, Keras           |
-| Data Processing  | NumPy, Pandas               |
-| Machine Learning | Scikit-learn                |
-| Image Processing | Pillow, OpenCV              |
-| Visualization    | Matplotlib, Seaborn, Plotly |
-| Dashboard        | Streamlit                   |
-| Version Control  | Git, GitHub                 |
-
----
-
-## ⚠️ 12. Limitations
-
-1. The dataset contains relatively few defect patches.
-2. The class distribution is highly imbalanced.
-3. The model performs patch-level classification, not pixel-level segmentation.
-4. False-positive predictions remain a challenge.
-5. Generalization to unseen textile materials and real-world factory environments has not been established.
-6. The current implementation is an academic prototype, not a production-ready inspection system.
-
----
-
-## 🚀 13. Future Enhancements
-
-* Expand the training dataset with more textile samples.
-* Improve defect detection precision and recall.
+* Expand the training dataset.
+* Apply stronger image augmentation.
 * Experiment with transfer learning.
-* Implement U-Net for pixel-level defect segmentation.
-* Integrate Grad-CAM for model explainability.
-* Explore real-time camera-based fabric inspection.
-* Deploy the dashboard publicly.
+* Improve defect precision and recall.
+* Explore segmentation models such as U-Net for pixel-level localization.
+* Add explainable AI visualizations such as Grad-CAM.
+* Improve dashboard reporting and quality analytics.
 
 ---
 
-## 👩‍💻 14. Author
+## 👩‍💻 Author
 
 **Swagata Das**
-
 MBA – Data Science and Artificial Intelligence
 Chandigarh University
 
-**Project Domain:** Deep Learning | Computer Vision | Textile Quality Assessment
-
-### Connect & Explore
-
-[GitHub Profile](https://github.com/swagata-dsai) · [Project Repository](https://github.com/swagata-dsai/FabricGuard-AI)
+GitHub: [@swagata-dsai](https://github.com/swagata-dsai)
 
 ---
 
-<div align="center">
+## ⭐ Acknowledgement
 
-### FabricGuard AI
+This project was developed as an academic exploration of deep learning applications in textile quality assessment using the AITEX Fabric Image Database.
 
-**Exploring AI-driven solutions for smarter textile quality assessment.**
+**FabricGuard AI — Exploring smarter textile quality assessment through AI.**
 
-*Academic Deep Learning Project*
-
-</div>
 
 
 
